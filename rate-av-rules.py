@@ -1,6 +1,6 @@
-inFile1 = open("./false-positives-av-rule-report.txt", "r")
-inFile2 = open("./non-false-positives-av-rule-report.txt", "r")
-outFile = open("./av-rule-ratings.txt", "w")
+inFile1 = open("false-positives-av-rule-report.txt", "r")
+inFile2 = open("non-false-positives-av-rule-report.txt", "r")
+outFile = open("av-rule-ratings.txt", "w")
 
 nfp_rules = []
 nfp_occurrences = []
@@ -41,7 +41,7 @@ for line in inFile2:
 
 #write all rules to output file
 for x in range(len(fp_rules)):
-	#format: rule fp_ocur fp_rate nfp_ocur nfp_rate fp_percentage
+	#format: fp_ocur fp_rate nfp_ocur nfp_rate fp_percentage rule
 	repRule = fp_rules[x]
 	repFPOcur = fp_occurrences[x]
 	repFPRate = fp_rates[x]
@@ -56,15 +56,15 @@ for x in range(len(fp_rules)):
 		repNFPRate = -1
 		fp_percentage = float(100)
 	outFile.write(repRule)
-	outFile.write(" ")
+	outFile.write(",")
 	outFile.write(str(repFPOcur))
-	outFile.write(" ")
+	outFile.write(",")
 	outFile.write(str(repFPRate))
-	outFile.write(" ")
+	outFile.write(",")
 	outFile.write(str(repNFPOcur))
-	outFile.write(" ")
+	outFile.write(",")
 	outFile.write(str(repNFPRate))
-	outFile.write(" ")
+	outFile.write(",")
 	outFile.write(str(fp_percentage))
 	outFile.write("\n")
 
